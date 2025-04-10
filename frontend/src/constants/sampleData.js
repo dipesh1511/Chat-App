@@ -44,3 +44,22 @@ export const sampleNotifications = [
        
     }
 ]
+
+export const sampleMessage = [
+    {
+        attachments:[
+            {
+                public_id:"abcde",
+                url:"https://www.w3schools.com/howto/img_avatar.com",
+            },
+        ],
+        content:"ham ky hi msg hai",
+        _id:"ajgfgfdsvfsd",
+        sender:{
+            _id:"user._id",
+            name:"chaman",
+        },
+        chat:"chatId",
+        createdAt:"2025-04-09T10:41:30.630Z",
+    }
+]
