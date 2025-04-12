@@ -3,7 +3,7 @@ import React, { memo } from "react";
 import { lightBlue } from "../../constants/color";
 import moment from "moment";
 import { fileFormat } from "../../lib/Features";
-import RanderAttachment from "./RanderAttachment";
+import RenderAttachment from "./RenderAttachment";
 
 const MessageComponent = ({ message, user }) => {
   const { sender, content, attachments = [], createdAt } = message;
@@ -35,7 +35,7 @@ const MessageComponent = ({ message, user }) => {
           return (
             <Box key={index}>
               <a href={url} target="_blank" download style={{ color: "black" }}>
-                {RanderAttachment(file, url)}
+                {RenderAttachment(file, url)}
               </a>
             </Box>
           );

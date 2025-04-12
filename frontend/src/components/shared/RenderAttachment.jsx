@@ -2,7 +2,7 @@ import React from "react";
 import { TransformImage } from "../../lib/Features";
 import { FileOpen as FileOpenIcon } from "@mui/icons-material";
 
-const RanderAttachment = (file, url) => {
+const RenderAttachment = (file, url) => {
   switch (file) {
     case "value":
       return <video src={url} preload="none" width={"200px"} controls />;
@@ -27,4 +27,4 @@ const RanderAttachment = (file, url) => {
   }
 };
 
-export default RanderAttachment;
+export default RenderAttachment;

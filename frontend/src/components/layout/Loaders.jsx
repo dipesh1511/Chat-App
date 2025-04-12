@@ -1,52 +1,48 @@
-import { Grid, Skeleton, Stack } from '@mui/material'
-import React from 'react'
+import React from "react";
+import { Grid, Skeleton } from "@mui/material";
 
-const Loaders = () => {
+const Loaders = () => (WrappedComponent) => {
   return (
-    <Grid sx={{
-        display:"grid",
-        gridTemplateColumns:{
-            xs:'1fr',
-            sm:'1fr 1fr 1fr',
-        },
-        height:'calc(100vh - 4rem)',
-        spacing:"1rem"
-    }} >
-        {/* Left Sidebar */}
-        <Grid 
+    <Grid container height={"calc(100vh - 4rem)"} spacing={"1rem"}>
+      {/* Left Sidebar */}
+      <Grid
+        item
+        sm={4}
+        md={3}
         sx={{
-            display:{xs:"none",sm:"block"},
-           
+          display: { xs: "none", sm: "block" },
         }}
-        
-        >
-            <Skeleton variant='rectangular' height={"100vh"} />
-        </Grid>
+        height={"100%"}
+      >
+        <Skeleton variant="rectangular" height={"100vh"} />
+      </Grid>
 
-        {/* Main Content */}
+      {/* Main Content */}
 
-        <Grid  >
-            
-                <Stack spacing={"1rem"} >
-                {Array.from({length:10}).map((_,index)=>(
-                    <Skeleton key={index} variant='rounded' height={"5rem"} />
-                    
-                ))}
-                </Stack>
-            
-            <Skeleton variant='rectangular' />
-        </Grid>
+      <Grid item xs={12} sm={8} md={5} lg={6} height={"100%"}>
+        <Stack spacing={"1rem"}>
+          {Array.from({ length: 10 }).map((_, index) => (
+            <Skeleton key={index} variant="rounded" height={"5rem"} />
+          ))}
+        </Stack>
+      </Grid>
 
-         {/* Right Sidebar */}
-        <Grid 
+      {/* Right Sidebar */}
+      <Grid
+        item
+        md={4}
+        lg={3}
+        height={"100%"}
         sx={{
-            display:{xs:"none",md:"block"},
-        }}  
-        >
-            <Skeleton variant='rectangular' height={"100vh"} />
-        </Grid>
+          display: { xs: "none", md: "block" },
+          padding: "2rem",
+          bgcolor: "rgba(0,0,0,0.85)",
+        }}
+      >
+        <Skeleton variant="rectangular" height={"100vh"} />
+      </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default Loaders
+export default Loaders;
