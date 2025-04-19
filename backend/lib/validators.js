@@ -1,4 +1,4 @@
-import { body, check, param, validationResult } from "express-validator";
+import { body, param, validationResult } from "express-validator";
 import { ErrorHandler } from "../utils/utility.js";
 
 
@@ -18,7 +18,6 @@ const registerValidator = ()=>[
     body("username","Please Provide username").notEmpty(),
     body("bio","Please Provide bio").notEmpty(),
     body("password","Please Provide password").notEmpty(),
-    check("avatar","Please provide avatar").notEmpty()
 ];
 
 const loginValidator = ()=>[
@@ -50,10 +49,6 @@ const removeMemberValidator = ()=>[
 
 const sendAttachmentValidator = ()=>[
     body("chatId","Please Provide chat ID").notEmpty(),
-    check("files")
-    .notEmpty().withMessage("Please Upload Attachments")
-    .isArray({min:1,max:5})
-    .withMessage("Attachments must be between 1 and 5")
 ];
 
 // this if for leavegroup validator, getmessage validator getchatdetails validator and deleteGroup validator
@@ -78,8 +73,13 @@ const acceptFriendRequestValidator = ()=>[
     .isBoolean().withMessage("Accept must be a boolean"),
 ];
 
+
+const adminLoginValidator = ()=>[
+    body("secretKey","Please Enter secret key").notEmpty(),
+]
+
 export {
-    addMemberValidator, chatIdValidator, loginValidator,
-    newGroupValidator, registerValidator, removeMemberValidator, renameGroupValidator, sendAttachmentValidator, validateHandler,
-    acceptFriendRequestValidator, sendFriendRequestValidator
+    acceptFriendRequestValidator, addMemberValidator, adminLoginValidator, chatIdValidator, loginValidator,
+    newGroupValidator, registerValidator, removeMemberValidator, renameGroupValidator, sendAttachmentValidator, sendFriendRequestValidator, validateHandler
 };
+

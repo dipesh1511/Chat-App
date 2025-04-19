@@ -4,8 +4,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "dev": "SET NODE_ENV=DEVELOPMENT && nodemon server.js",
+    "start": "SET NODE_ENV=PRODUCTION && node server.js"
   },
   "author": "Dipesh",
   "license": "ISC",

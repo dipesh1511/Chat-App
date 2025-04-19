@@ -8,22 +8,24 @@ import  {Request}  from "../models/request.Models.js";
 import  {NEW_REQUEST, REFETCH_CHATS}  from "../constants/events.js";
 import { getOtherMember } from "../lib/helper.js";
 
-const newUser = async (req,res) =>{
-
-    const {name, username,password,bio} = req.body;
-
-    if(!username || !password) return res.status(400).json({
-        success:false,
-        message:"Please provide username and password",
-    });
-
-    const avatar = {public_id:"abhvs",url:"avgvs"};
-    const user = await User.create(
-        {name,bio,
-            username,password,avatar,})
-
-    sendToken(res,user,201,"User created");
-}
+const newUser = TryCatch(async (req,res) =>{
+        const {name, username,password,bio} = req.body;
+    
+        const file = req.file;
+    
+        if(!file) return next(new ErrorHandler("Please Upload avatar"))
+        
+        const avatar = {
+            public_id:"asbhgd",
+            url:"smnsav",
+        }
+        const user = await User.create(
+            {name,bio,
+                username,password,avatar,})
+    
+        sendToken(res,user,201,"User created");
+    }
+)
 
         
 const login = TryCatch(async(req,res,next) =>{
@@ -186,9 +188,9 @@ const getMyFriends = TryCatch(async (req,res) =>{
     const friends = chats.map(({members}) => {
         const otherUSer = getOtherMember(members,req.user);
         return {
-            _id:otherUSer._id,
+            _id:otherUSer?._id,
             name:otherUSer.name,
-            avatar:otherUSer.avatar.url,
+            avatar:otherUSer.avatar?.url,
         }
     });
 

@@ -7,6 +7,10 @@ const schema = new Schema({
     name:{
         type:String,
     },
+    content:{
+        type:String,
+        required: false,
+    },
     attachments:[{
         public_id:{
             type:String,
