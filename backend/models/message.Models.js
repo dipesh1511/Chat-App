@@ -9,7 +9,6 @@ const schema = new Schema({
     },
     content:{
         type:String,
-        required: false,
     },
     attachments:[{
         public_id:{

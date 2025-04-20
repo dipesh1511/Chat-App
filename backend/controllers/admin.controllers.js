@@ -5,7 +5,7 @@ import { Message } from '../models/message.Models.js';
 import {User} from '../models/user.Models.js';
 import { ErrorHandler } from '../utils/utility.js';
 import { cookieOptions } from '../utils/db.js';
-import { adminSecretKey } from '../server.js';
+import { adminSecretKey } from '../app.js';
 
 
 const adminLogin = TryCatch(async (req,res,next) => {
